@@ -1,0 +1,23 @@
+def list2string(list1): #converts a list to a string for later
+    string = ''
+    for s in list1:
+        string += s
+    return string
+
+reverse = '' #I can't have reverse inside the function reverseDigits
+def reverseDigits(num,reverse): #num is the number to be reversed, reverse is the string containing reversed num
+    n = [char for char in str(num)] #converts num into a string and then into a list of characters (i.e. 1234 becomes ['1','2','3','4']
+    
+    if num < 0: #base case
+        return None
+    elif num == 0: #base case
+        reverse += '0'
+        print(reverse)
+    elif 0 < num <= 9: #base case
+        reverse += str(num)
+        print(reverse)
+    else:
+        dig = num%10 #finds the digit in ones place (i.e. 4 in 1234)
+        reverse += str(dig) #adds the ones digit to reverse (i.e. reverse = '' -> reverse = '4' for 1234)
+        del n[-1] #removes the last digit in the list of integers (i.e. ['1', '2', '3', '4'] -> ['1', '2', '3']
+        reverseDigits(int(list2string(n)), reverse) #calls reverseDigits with the new list and does it all over again
